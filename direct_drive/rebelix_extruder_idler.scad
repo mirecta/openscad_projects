@@ -4,7 +4,7 @@
 
 
 arm_width = 6.5;
-base_pos = [-1,1,0];
+base_pos = [-1,0,0];
 module arm_part(){
 translate([-arm_width/2,0]){
   difference(){
