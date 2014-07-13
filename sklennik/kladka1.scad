@@ -40,7 +40,7 @@ translate([-18,0,0]) difference(){
    translate([0,0,2]) cylinder(h=3, r1=35./2,r2=25./2, $fn=70);
    cylinder(h=2, r=35./2, $fn=70);
 }
-   translate([0,0,-0.2])cylinder(h=6, r=18./2, $fn=70);
+   translate([0,0,-0.2])cylinder(h=6, r=18.3/2, $fn=70);
 }
 
 
@@ -49,7 +49,7 @@ translate([0,35,0])difference(){
    translate([0,0,1]) cylinder(h=2, r1=35./2,r2=25./2, $fn=70);
    cylinder(h=1, r=35./2, $fn=70);
 }
-   translate([0,0,-0.2])cylinder(h=6, r=18./2, $fn=70);
+   translate([0,0,-0.2])cylinder(h=6, r=18.3/2, $fn=70);
 }
 
 translate([0,-35,0])difference(){
@@ -59,6 +59,6 @@ translate([0,-35,0])difference(){
    cylinder(h=5, r=25./2, $fn=70);
    
 }
-   translate([0,0,-0.2])cylinder(h=10, r=18./2, $fn=70);
+   translate([0,0,-0.2])cylinder(h=10, r=18.3/2, $fn=70);
    translate([-13,0,3.8]) rotate([0,90,0]) cylinder(h=26, r=1.5/2, $fn=30);
 }
