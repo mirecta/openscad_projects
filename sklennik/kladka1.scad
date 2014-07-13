@@ -9,27 +9,32 @@ translate([18,0,0])
            
 			difference(){
            union(){
-           cylinder(h=21, r=18./2, $fn=70);
-           cylinder(h=10, r=25./2, $fn=70);
+           //base
+           cylinder(h=21+7, r=18./2, $fn=70);
+           cylinder(h=7, r=25./2, $fn=70);
           } 
-          translate([-13,0,7.5]) rotate([0,90,0]) cylinder(h=26, r=1.5/2, $fn=30);
+         //rope hole 
+         translate([-13,0,6]) rotate([0,90,0]) cylinder(h=26, r=1.5/2, $fn=30);
+         translate([-13,0,12]) rotate([0,90,0]) cylinder(h=26, r=1.5/2, $fn=30);
          }
-
+         //base cone
 			translate([0,0,2]) cylinder(h=3, r1=35./2,r2=25./2, $fn=70);
          cylinder(h=2, r=35./2, $fn=70);
 	  }
-	translate([0,0,19+2.5-13])difference(){
-   cylinder(h=13, r=6.2/2,$fn=70);
-      translate([2.5,-3,0]) cube(size=[3,6,13]);
+   //shaft hole
+	translate([0,0,19+2.5-8])difference(){
+   cylinder(h=20, r=6.3/2,$fn=70);
+   translate([2.7,-3,0]) cube(size=[3,6,23]);
    } 
 } 
  union(){
-    translate([0,0,18]) rotate([0,90,0])cylinder(h=15, r=3./2, $fn=70);
-     translate([3.5,-5.5/2,14]) cube(size=[2.4,5.5,8]);
+    //shaft nut and hole
+    translate([0,0,18+7]) rotate([0,90,0])cylinder(h=15, r=3.2/2, $fn=70);
+     translate([3.5,-5.5/2,14+7]) cube(size=[2.4,5.5,8]);
  }  
 
 }
-
+//end cap 
 translate([-18,0,0]) difference(){
    union(){
    translate([0,0,2]) cylinder(h=3, r1=35./2,r2=25./2, $fn=70);
@@ -39,5 +44,21 @@ translate([-18,0,0]) difference(){
 }
 
 
+translate([0,35,0])difference(){
+   union(){
+   translate([0,0,1]) cylinder(h=2, r1=35./2,r2=25./2, $fn=70);
+   cylinder(h=1, r=35./2, $fn=70);
+}
+   translate([0,0,-0.2])cylinder(h=6, r=18./2, $fn=70);
+}
 
-
+translate([0,-35,0])difference(){
+   union(){
+   translate([0,0,1]) cylinder(h=2, r1=35./2,r2=25./2, $fn=70);
+   cylinder(h=1, r=35./2, $fn=70);
+   cylinder(h=5, r=25./2, $fn=70);
+   
+}
+   translate([0,0,-0.2])cylinder(h=10, r=18./2, $fn=70);
+   translate([-13,0,3.8]) rotate([0,90,0]) cylinder(h=26, r=1.5/2, $fn=30);
+}
