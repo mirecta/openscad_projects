@@ -22,7 +22,7 @@ translate([18,0,0])
          cylinder(h=2, r=35./2, $fn=70);
 	  }
    //shaft hole
-	translate([0,0,19+2.5-2])difference(){
+	translate([0,0,19+2.5-2-5])difference(){
    cylinder(h=20, r=6.3/2,$fn=70);
    translate([2.7,-3,0]) cube(size=[3,6,23]);
    } 
