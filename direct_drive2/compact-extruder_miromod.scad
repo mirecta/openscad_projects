@@ -43,6 +43,7 @@ if(with_motor == "PG35L") {
 		translate([19+25+2, -9, 8+3]) rotate([0,180,0]) idler();
 }
 
+//rotate([0,180,0]) idler();
 //miro_hotend();
 //tiltscrew();
 // printed rods for the 608zz bearings.
@@ -444,7 +445,7 @@ module extruder_full_holes(vertical_carriage=false, mounting_holes=true){
 module tiltscrew() {
     for(r=[0:5:30]) rotate([0,0,-r])
       translate([-2,-15,0]) cube([3.4,20,7.4]);
-    for(r=[0:5:30]) rotate([0,0,-r])
+    for(r=[0:2:30]) rotate([0,0,-r])
       translate([-10,0,7.4/2]) rotate([0,90,0]) cylinder(r=5/2,h=40,$fn=20);
 }
 
@@ -456,11 +457,18 @@ module bearing() {
 }
 
 module extruder_idler_base(bearing_indent){
+difference(){ 
+union(){
  translate([0,10,3-0.5]) cube([19.5,34,8.5]);
- intersection() {
+ translate([0,25+5,6.1-bearing_indent]) rotate([0,90,0]) cylinder(r=16/2, h=19.5);
+}
+translate([-5,10,3-0.5+8.5])cube([80,80,20]);
+}
+
+/* intersection() {
    translate([0,8,-(8)]) cube([19.5,36,8+3]);
-   translate([0,25+5,6.1-bearing_indent]) rotate([0,90,0]) cylinder(r=16/2, h=19.5);
- }
+   translate([0,25+5,6.1-bearing_indent]) #rotate([0,90,0]) cylinder(r=16/2, h=19.5);
+ }*/
  %translate([6,30,6]) bearing();
   translate([0,43,11]) rotate([0,90,0]) {
 	translate([0,0,6]) cube([8.4,5,10.5-6]);
@@ -491,7 +499,7 @@ module extruder_idler_holes(bearing_indent){
   translate([0,48,11-8.4/2]) rotate([0,90,0]) bolt(25, 4);
   *translate([0,48,11-8.4/2]) rotate([0,90,0]) nut(6.5, 5);
 
-  hull() {
+  translate ([-1,0])hull() {
   cube([30,16+2,4]);
   translate([0,2.5+2,-4]) cube([30,16,4]);
   }
