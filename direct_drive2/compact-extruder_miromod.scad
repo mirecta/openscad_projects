@@ -17,6 +17,7 @@ PR608=false;
 
 //filament width
 filw=2.2; //it was 5.2??
+filamentshift = -1.0;
 m4_nut_height=2;
 m4_nut_diameter=8.3;
 
@@ -34,7 +35,7 @@ with_motor = "42BYG48HJ50";
 //else {
 
 extruder(vertical_carriage=with_vertical_carriage_holes, mounting_holes=with_mountplate_holes, hotend=with_hotend_mount);
-
+/*
 if(with_motor == "PG35L") {
 	for(i=dual_extruder ? [0,1] : [0]) mirror([i,0,0])
 		translate([19+25+2+6, -9, 8+3]) rotate([0,180,0]) idler();
@@ -42,7 +43,7 @@ if(with_motor == "PG35L") {
 	for(i=dual_extruder ? [0,1] : [0]) mirror([i,0,0])
 		translate([19+25+2, -9, 8+3]) rotate([0,180,0]) idler();
 }
-
+*/
 //rotate([0,180,0]) idler();
 //miro_hotend();
 //tiltscrew();
@@ -131,7 +132,7 @@ module bolt(length=10, d=3.3) {
 }
 module miro_hotend() {
 width=21;
-translate([(1.5+11+3.5+2+1)-width/2,58])
+translate([(1.5+11+3.5+2+1)-width/2+filamentshift,58])
 difference(){
 union(){
 cube([width,8,20]);
@@ -239,8 +240,8 @@ module extruder_42BYG48HJ50_holes() {
  translate([5.5,-5,6]) cube([10,10,20]);
 
  // Filament path
- translate([1.5+11+3.5+2+1,65+4,11]) rotate([90,0,0]) cylinder(r=filw/2, h=70,$fn=20);
-translate([1.5+11+3.5+2+1,58+28,11]) rotate([90,0,0]) cylinder(r=6.2/2, h=30,$fn=20);
+ translate([1.5+11+3.5+2+1+filamentshift,65+4,11]) rotate([90,0,0]) cylinder(r=filw/2, h=70,$fn=20);
+translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6.2/2, h=30,$fn=20);
  // Hole for drive gear check
  translate([1.5+11+3.5-30+2,25-3+4,11]) rotate([90,0,90]) cylinder(r=4, h=70, $fn=20);
 

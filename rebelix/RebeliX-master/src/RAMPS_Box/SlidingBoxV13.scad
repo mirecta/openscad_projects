@@ -58,18 +58,23 @@ Allow = 0.5;		// Allowance for fit of the lid. A gap around it, and elsewhere.
 
 // Print both together (if they fit!)
 
+//cover();
+box();
+
+module cover(){
 difference(){
 	union(){
 		translate([0,-OutW/2-5,OutD/2]) pboxlid();
 		translate([-OutL/2+2,-OutW+2,0]) cube([14,5,OutD-10]);		
 	}
-	union(){
+	translate([0,-9])union(){
 		translate([-OutL/2-0.1,-13,OutD/2-20]) cube([10,10,20]);
 		translate([-OutL/2-0.1,-13,OutD/2-10]) rotate([0,90,0])cylinder(h=10,r=10);
 	}
 }
+}
 
-
+module box(){
 difference(){
 	union(){
 	translate([0,OutD/2+5,OutL/2-WallT]) rotate([0,-90,90]) pbox();
@@ -97,6 +102,7 @@ difference(){
 	// Hole for X motor and endstop cables
 	translate([0,OutD+1,OutD/2-8]) rotate([90,0,0]) cube([50,60,7]);
 	}
+}
 }
 
 // ***************  Your modules to add apertures to  ***************************

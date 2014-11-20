@@ -36,7 +36,7 @@ module y_cuts(){
   translate([5,base_thickness + 1.3,(height/2)-2])  cube([30,2.1,3.5]);
 }
 
-difference(){
+translate([0,0,height])rotate([0,-180,0])difference(){
 	y_rod_holder_base();
 	y_cuts();
 }	
