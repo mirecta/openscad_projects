@@ -135,11 +135,20 @@ width=21;
 translate([(1.5+11+3.5+2+1)-width/2+filamentshift,58])
 difference(){
 union(){
-cube([width,8,20]);
+cube([width+12,8,20]);
 }
 translate([(width-10.5)/2,0,2.5])cube([10.5,4,20]);
+ //m3nut for fan2 holder
+ translate([27,1,7]){
+ translate([0,1])cube([3,6+1+0.5,5.8]);
+ translate([-4,3.5,5.8/2])rotate([0,90])cylinder(r=3.2/2,h=11,$fn=20);
+}
 }
 
+% translate([(1.5+11+3.5+2+1+10)-width/2+filamentshift,58+8,11]) rotate([-90,0,0]){
+cylinder(r=6/2,h=55,$fn=20);
+translate([0,0,13])cylinder(r=25/2,h=25,$fn=20);
+}
 }
 
 module jhead_mount() {
@@ -247,12 +256,16 @@ translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6
 
   translate([12+2,5+4,3]) tiltscrew();
 //m3nut for fan holder
+  translate([28,58,2.5]){
+  translate([-5.8/2,0,0])cube([5.8,10,3]);
+  translate([0,+4.5,-4])cylinder(r=3.2/2,h=6,$fn=15);
+}
+if (dual_extruder){
+//m3nut for fan holder
   translate([-5.8/2,58-8,3])cube([5.8,10,3]);
   translate([0,58-3.5,0])cylinder(r=3.2/2,h=6,$fn=15);
-//m3nut for fan2 holder
 
- translate([26,58-7.8])cube([3,5.8,6+1+0.5]);
- translate([28,58-7.8+5.8/2,3.5])rotate([0,90])cylinder(r=3.2/2,h=10,$fn=20);
+}
 
 }
 
