@@ -7,7 +7,7 @@
 // little mod by Chema
 //mod by mirecta
 
-dual_extruder = false;
+dual_extruder = true;
 
 with_vertical_carriage_holes = true;
 sep_mount=30; //vertical_carriage screw space (24 or 30)
@@ -259,7 +259,7 @@ translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6
 //m3nut for fan holder
   translate([28,58,2.5]){
   translate([-5.8/2,0,0])cube([5.8,10,3]);
-  translate([0,+4.5,-80-4])cylinder(r=3.2/2,h=80,$fn=15);
+  translate([0,+4.5,-4])cylinder(r=3.2/2,h=20,$fn=15);
 }
 if (dual_extruder){
 //m3nut for fan holder
