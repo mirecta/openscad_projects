@@ -4,8 +4,8 @@ module fan_duct_holder(){
     cube([10,13.3,3]);
     translate([0,11.3-3,+3])cube([10,5,3]);   
     translate([-2,0,-24])cube([3,13.3,27]);
-    translate([-13-3,0,-24])cube([13+3,13.3,6]);
-    translate([-13-3,0,-24-3])cube([3,13.5,3]);
+    translate([-13,0,-24])cube([13,13.3,6]);
+    //translate([-13-3,0,-24-3])cube([3,13.5,3]);
    }
     translate([5,+4.5,-80+4])cylinder(r=3.2/2,h=80,$fn=15);
     translate([-5.5,18-5-4,-31])cylinder(r=3.5/2,h=20,$fn=20);
@@ -21,7 +21,13 @@ module duct(){
 translate([-8,5])
 difference(){
 cube([16,8,3]);
-translate([8,4,-1])cylinder(r=3.5/2,h=10,$fn=20);
+translate([8,4,-1]){
+hull(){
+translate([0,0.5])cylinder(r=3.5/2,h=10,$fn=20);
+translate([0,-2.4])cylinder(r=3.5/2,h=10,$fn=20);
+}
+}
+
 }
 difference(){
 translate([-20,-40,0])cube([40,45,3]);
