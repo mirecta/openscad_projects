@@ -141,7 +141,7 @@ cube([width+12,8,20]);
 translate([(width-10.5)/2,0,2.5])cube([10.5,4,20]);
  //m3nut for fan2 holder
  translate([27,1,7]){
- translate([0,1])cube([3,6+1+0.5,5.8]);
+ #translate([0,0])cube([3,6+1+0.5,5.8]);
  translate([-4,3.5,5.8/2])rotate([0,90])cylinder(r=3.2/2,h=11,$fn=20);
 }
 }

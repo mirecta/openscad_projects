@@ -41,7 +41,7 @@ translate([-12.5+1.5,-42+1.5+15+1.5,32])cube([25-3,5-3,10]);
 //translate([-27/2,-27-1.5,7])cube([27,27,10]);
 }
 }
-#translate([-30,-22,44])rotate([0,90,0])cylinder(r=6,h=50,$fn=50);
+#translate([-30,-22,44])rotate([0,90,0])cylinder(r=8,h=50,$fn=50);
 }
 
 translate([2.5,0])fan_pad();
