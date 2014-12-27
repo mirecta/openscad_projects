@@ -53,13 +53,13 @@ module x_carriage_holes(){
 
 module x_carriage_fancy(){
  // Top right corner
- translate([13.5,-5,0]) translate([0,45+11.5,-1]) rotate([0,0,45]) translate([0,-15,0]) cube([30,30,20]);
+ translate([13.5,-5,0]) translate([0,x_rod_distance+11.5,-1]) rotate([0,0,45]) translate([0,-15,0]) cube([30,30,20]);
  // Bottom right corner
  translate([0,5,0]) translate([0,-11.5,-1]) rotate([0,0,-45]) translate([0,-15,0]) cube([30,30,20]);
  // Bottom ĺeft corner
  translate([-33,5,0]) translate([0,-11.5,-1]) rotate([0,0,-135]) translate([0,-15,0]) cube([30,30,20]);
  // Top left corner
- translate([-33-13.5,-5,0]) translate([0,45+11.5,-1]) rotate([0,0,135]) translate([0,-15,0]) cube([30,30,20]);	
+ translate([-33-13.5,-5,0]) translate([0,x_rod_distance+11.5,-1]) rotate([0,0,135]) translate([0,-15,0]) cube([30,30,20]);	
 }
 
 // Final part
@@ -68,7 +68,7 @@ module x_carriage(){
   x_carriage_base();
   x_carriage_beltcut();
   x_carriage_holes();
-  x_carriage_fancy();
+  #x_carriage_fancy();
  }
 }
 
