@@ -7,7 +7,7 @@
 // little mod by Chema
 //mod by mirecta
 
-dual_extruder = false;
+dual_extruder = true;
 
 with_vertical_carriage_holes = true;
 sep_mount=30; //vertical_carriage screw space (24 or 30)
@@ -18,7 +18,7 @@ PR608=false;
 
 //filament width
 filw=2.2; //it was 5.2??
-filamentshift = -1;
+filamentshift = -0.6;
 m4_nut_height=2;
 m4_nut_diameter=8.3;
 
@@ -140,8 +140,8 @@ cube([width+12,8,20]);
 }
 translate([(width-10.5)/2,0,2.5])cube([10.5,4,20]);
  //m3nut for fan2 holder
- translate([27,1,7]){
- #translate([0,0])cube([3,6+1+0.5,5.8]);
+ #translate([27,1,7]){
+ translate([0,-1])cube([3,6+1+1.5,5.8]);
  translate([-4,3.5,5.8/2])rotate([0,90])cylinder(r=3.2/2,h=11,$fn=20);
 }
 }
@@ -160,7 +160,7 @@ module jhead_mount() {
    translate([filamentshift-1,0]) 
    difference() {
 	union() {
-      translate([4,54-2,0]) cube([top_d+8 -filamentshift + 1 ,top_h+groove_h+2,24]);
+      translate([4,54-2,0]) cube([top_d+8 -filamentshift + 1+7 ,top_h+groove_h+2,14]);
       hull() {
         translate([2,54-5,14]) cube([top_d+12 -filamentshift + 1 ,top_h+groove_h+7,10]);
         translate([4,54-2,10]) cube([top_d+8  -filamentshift + 1,top_h+groove_h+2,14]);
@@ -181,7 +181,12 @@ module jhead_mount() {
 	    translate([1.5+11+3.5,54+top_h+groove_h,11+15]) rotate([-90,0,0]) cylinder(r=(groove_d+4)/2+0.5, h=top_h);
       }
 	 //translate([0,54,12]) cube([33, 2, 20]);
-      translate([30,61,18]) rotate([0,-90,0]) bolt(length=30, d=3.6);
+     translate([40,61,18]) rotate([0,-90,0]) bolt(length=40, d=3.6);
+     //fan 2 holder
+      translate([32,56,7]){
+ translate([0,-1])cube([3,6+1+1.5,5.8]);
+ translate([-4,3.5,5.8/2])rotate([0,90])cylinder(r=3.2/2,h=11,$fn=20);
+}
    }
 }
 
@@ -258,8 +263,8 @@ translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6
   translate([12+2,5+4,3]) tiltscrew();
 //m3nut for fan holder
   translate([28,58,2.5]){
-  translate([-5.8/2,0,-1])cube([5.8,10,3]);
-  translate([0,+4.5,-4])cylinder(r=3.2/2,h=5,$fn=15);
+  translate([-5.8/2,-1,-1])cube([5.8,11,3]);
+  translate([0,+4.5,-4])cylinder(r=3.2/2,h=8,$fn=15);
 }
 if (dual_extruder){
 //m3nut for fan holder
