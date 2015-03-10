@@ -7,7 +7,7 @@
 // little mod by Chema
 //mod by mirecta
 
-dual_extruder = true;
+dual_extruder = false;
 
 with_vertical_carriage_holes = true;
 sep_mount=30; //vertical_carriage screw space (24 or 30)
@@ -18,13 +18,13 @@ PR608=false;
 
 //filament width
 filw=2.2; //it was 5.2??
-filamentshift = -1.0;
+filamentshift = -1;
 m4_nut_height=2;
 m4_nut_diameter=8.3;
 
 // supported hotends: jhead, catnozzle double is work in progress...
 // comment the line to disable
-with_hotend_mount = "miro";
+with_hotend_mount = "jhead";
 //with_hotend_mount = "CatNozzle"; //for CatNozzle (Dual or single) you only need "with_mount_plate=true"
 
 // supported motors: PG35L, 42BYG48HJ50
@@ -157,13 +157,13 @@ module jhead_mount() {
    top_h=5;
    groove_d=12.3;
    groove_h=4.2;
-
+   translate([filamentshift-1,0]) 
    difference() {
 	union() {
-      translate([4,54-2,0]) cube([top_d+8,top_h+groove_h+2,24]);
+      translate([4,54-2,0]) cube([top_d+8 -filamentshift + 1 ,top_h+groove_h+2,24]);
       hull() {
-        translate([2,54-5,14]) cube([top_d+12,top_h+groove_h+7,10]);
-        translate([4,54-2,10]) cube([top_d+8,top_h+groove_h+2,14]);
+        translate([2,54-5,14]) cube([top_d+12 -filamentshift + 1 ,top_h+groove_h+7,10]);
+        translate([4,54-2,10]) cube([top_d+8  -filamentshift + 1,top_h+groove_h+2,14]);
       }
      }
 	 translate([1.5+11+3.5,54,11]) rotate([-90,0,0]) cylinder(r=groove_d/2+0.5, h=top_h+groove_h+1);
@@ -258,8 +258,8 @@ translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6
   translate([12+2,5+4,3]) tiltscrew();
 //m3nut for fan holder
   translate([28,58,2.5]){
-  translate([-5.8/2,0,0])cube([5.8,10,3]);
-  translate([0,+4.5,-4])cylinder(r=3.2/2,h=20,$fn=15);
+  translate([-5.8/2,0,-1])cube([5.8,10,3]);
+  translate([0,+4.5,-4])cylinder(r=3.2/2,h=5,$fn=15);
 }
 if (dual_extruder){
 //m3nut for fan holder
