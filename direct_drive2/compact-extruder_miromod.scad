@@ -256,7 +256,7 @@ module extruder_42BYG48HJ50_holes() {
 
  // Filament path
  translate([1.5+11+3.5+2+1+filamentshift,65+4,11]) rotate([90,0,0]) cylinder(r=filw/2, h=70,$fn=20);
-translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6.2/2, h=30,$fn=20);
+//translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6.2/2, h=30,$fn=20);
  // Hole for drive gear check
  translate([1.5+11+3.5-30+2,25-3+4,11]) rotate([90,0,90]) cylinder(r=4, h=70, $fn=20);
 
@@ -264,7 +264,7 @@ translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6
 //m3nut for fan holder
   translate([28,58,2.5]){
   translate([-5.8/2,-1,-1])cube([5.8,11,3]);
-  translate([0,+4.5,-4])cylinder(r=3.2/2,h=8,$fn=15);
+  translate([0,+4.5,-4])cylinder(r=3.2/2,h=5,$fn=15);
 }
 if (dual_extruder){
 //m3nut for fan holder
