@@ -7,7 +7,7 @@
 // little mod by Chema
 //mod by mirecta
 
-dual_extruder = true;
+dual_extruder = false;
 
 with_vertical_carriage_holes = true;
 sep_mount=30; //vertical_carriage screw space (24 or 30)
@@ -156,7 +156,7 @@ module jhead_mount() {
    top_d=16;
    top_h=5;
    groove_d=12.3;
-   groove_h=4.2;
+   groove_h=5.7;
    translate([filamentshift-1,0]) 
    difference() {
 	union() {
