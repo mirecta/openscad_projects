@@ -58,8 +58,8 @@ Allow = 0.5;		// Allowance for fit of the lid. A gap around it, and elsewhere.
 
 // Print both together (if they fit!)
 
-//cover();
-box();
+cover();
+//box();
 
 module cover(){
 difference(){
@@ -68,7 +68,7 @@ difference(){
 		translate([-OutL/2+2,-OutW+2,0]) cube([14,5,OutD-10]);		
 	}
 	translate([0,-9])union(){
-		translate([-OutL/2-0.1,-13,OutD/2-20]) cube([10,10,20]);
+		#translate([-OutL/2-0.1,-13,OutD/2-20]) cube([10,15,20]);
 		translate([-OutL/2-0.1,-13,OutD/2-10]) rotate([0,90,0])cylinder(h=10,r=10);
 	}
 }
@@ -78,8 +78,8 @@ module box(){
 difference(){
 	union(){
 	translate([0,OutD/2+5,OutL/2-WallT]) rotate([0,-90,90]) pbox();
-	translate([-4,OutD+2*WallT+0.2,0]) cube([8,2,30]);
-	translate([-4,OutD+2*WallT+0.2,60]) cube([8,2,30]);
+	translate([-4 +18,OutD+2*WallT+0.2,0]) cube([8,2,30]);
+	translate([-4 + 18,OutD+2*WallT+0.2,60]) cube([8,2,30]);
 	}
 	union(){
 	  // Reset hole
@@ -97,8 +97,8 @@ difference(){
 	  cylinder(h=10,r=1.6);
 	}
 	// Mounting holes
-	translate([0,OutD,15]) rotate([-90,0,0]) cylinder(r = 3.05, h = 20, $fn = 30);
-	translate([0,OutD,75]) rotate([-90,0,0]) cylinder(r = 3.05, h = 20, $fn = 30);	
+	translate([0 + 18,OutD,15]) rotate([-90,0,0]) cylinder(r = 3.05, h = 20, $fn = 30);
+	translate([0 + 18,OutD,75]) rotate([-90,0,0]) cylinder(r = 3.05, h = 20, $fn = 30);	
 	// Hole for X motor and endstop cables
 	translate([0,OutD+1,OutD/2-8]) rotate([90,0,0]) cube([50,60,7]);
 	}

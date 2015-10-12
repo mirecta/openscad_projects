@@ -156,7 +156,7 @@ module jhead_mount() {
    top_d=16;
    top_h=5;
    groove_d=12.3;
-   groove_h=5.7;
+   groove_h=5.6;
    translate([filamentshift-1,0]) 
    difference() {
 	union() {
@@ -183,10 +183,10 @@ module jhead_mount() {
 	 //translate([0,54,12]) cube([33, 2, 20]);
      translate([40,61,18]) rotate([0,-90,0]) bolt(length=40, d=3.6);
      //fan 2 holder
-      translate([32,56,7]){
+ /*     translate([32,56,7]){
  translate([0,-1])cube([3,6+1+1.5,5.8]);
  translate([-4,3.5,5.8/2])rotate([0,90])cylinder(r=3.2/2,h=11,$fn=20);
-}
+}*/
    }
 }
 
@@ -262,14 +262,14 @@ module extruder_42BYG48HJ50_holes() {
 
   translate([12+2,5+4,3]) tiltscrew();
 //m3nut for fan holder
-  translate([28,58,2.5]){
+/* # translate([28,58,2.5]){
   translate([-5.8/2,-1,-1])cube([5.8,11,3]);
   translate([0,+4.5,-4])cylinder(r=3.2/2,h=5,$fn=15);
-}
+}*/
 if (dual_extruder){
 //m3nut for fan holder
-  translate([-5.8/2,58-8,3])cube([5.8,10,3]);
-  translate([0,58-3.5,0])cylinder(r=3.2/2,h=6,$fn=15);
+ // translate([-5.8/2,58-8,3])cube([5.8,10,3]);
+ // translate([0,58-3.5,0])cylinder(r=3.2/2,h=6,$fn=15);
 
 }
 
