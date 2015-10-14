@@ -35,7 +35,7 @@ with_motor = "42BYG48HJ50";
 //}
 //else {
 
-extruder(vertical_carriage=with_vertical_carriage_holes, mounting_holes=with_mountplate_holes, hotend=with_hotend_mount);
+/*extruder(vertical_carriage=with_vertical_carriage_holes, mounting_holes=with_mountplate_holes, hotend=with_hotend_mount);*/
 /*
 if(with_motor == "PG35L") {
 	for(i=dual_extruder ? [0,1] : [0]) mirror([i,0,0])
@@ -43,9 +43,9 @@ if(with_motor == "PG35L") {
 } else if(with_motor == "42BYG48HJ50") {
 	for(i=dual_extruder ? [0,1] : [0]) mirror([i,0,0])
 		translate([19+25+2, -9, 8+3]) rotate([0,180,0]) idler();
-}
-*/
-//rotate([0,180,0]) idler();
+}*/
+ 
+rotate([0,180,0]) idler();
 //miro_hotend();
 //tiltscrew();
 // printed rods for the 608zz bearings.
@@ -479,7 +479,7 @@ module bearing() {
 module extruder_idler_base(bearing_indent){
 difference(){ 
 union(){
- translate([0,10,3-0.5]) cube([19.5,34,8.5]);
+ translate([0,10-4,3-0.5]) cube([19.5,34+4,8.5]);
  translate([0,25+5,6.1-bearing_indent]) rotate([0,90,0]) cylinder(r=16/2, h=19.5);
 }
 translate([-5,10,3-0.5+8.5])cube([80,80,20]);
