@@ -81,8 +81,7 @@ hobbing_depth=0.3;
 echo ("filament_feed_hole_d", filament_feed_hole_d);
 
 //This is the distance from the centre of the filament to the centre of the hobbed bolt.
-filament_feed_hole_offset=8/2-hobbing_depth+filament_diameter/2 -0.5;
-filament_feed_hole_position_offset = 0;
+filament_feed_hole_offset=8/2-hobbing_depth+filament_diameter/2;
 
 echo ("filament_feed_hole_offset", filament_feed_hole_offset);
 
