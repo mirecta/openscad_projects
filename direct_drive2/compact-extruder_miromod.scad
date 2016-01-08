@@ -7,7 +7,7 @@
 // little mod by Chema
 //mod by mirecta
 
-dual_extruder = true;
+dual_extruder = false;
 
 with_vertical_carriage_holes = true;
 sep_mount=30; //vertical_carriage screw space (24 or 30)
@@ -18,13 +18,13 @@ PR608=false;
 
 //filament width
 filw=2.2; //it was 5.2??
-filamentshift = -1.0;
+filamentshift = -0.6;
 m4_nut_height=2;
 m4_nut_diameter=8.3;
 
 // supported hotends: jhead, catnozzle double is work in progress...
 // comment the line to disable
-with_hotend_mount = "miro";
+with_hotend_mount = "jhead";
 //with_hotend_mount = "CatNozzle"; //for CatNozzle (Dual or single) you only need "with_mount_plate=true"
 
 // supported motors: PG35L, 42BYG48HJ50
@@ -35,7 +35,7 @@ with_motor = "42BYG48HJ50";
 //}
 //else {
 
-extruder(vertical_carriage=with_vertical_carriage_holes, mounting_holes=with_mountplate_holes, hotend=with_hotend_mount);
+/*extruder(vertical_carriage=with_vertical_carriage_holes, mounting_holes=with_mountplate_holes, hotend=with_hotend_mount);*/
 /*
 if(with_motor == "PG35L") {
 	for(i=dual_extruder ? [0,1] : [0]) mirror([i,0,0])
@@ -43,9 +43,9 @@ if(with_motor == "PG35L") {
 } else if(with_motor == "42BYG48HJ50") {
 	for(i=dual_extruder ? [0,1] : [0]) mirror([i,0,0])
 		translate([19+25+2, -9, 8+3]) rotate([0,180,0]) idler();
-}
-*/
-//rotate([0,180,0]) idler();
+}*/
+ 
+rotate([0,180,0]) idler();
 //miro_hotend();
 //tiltscrew();
 // printed rods for the 608zz bearings.
@@ -140,8 +140,8 @@ cube([width+12,8,20]);
 }
 translate([(width-10.5)/2,0,2.5])cube([10.5,4,20]);
  //m3nut for fan2 holder
- translate([27,1,7]){
- #translate([0,0])cube([3,6+1+0.5,5.8]);
+ #translate([27,1,7]){
+ translate([0,-1])cube([3,6+1+1.5,5.8]);
  translate([-4,3.5,5.8/2])rotate([0,90])cylinder(r=3.2/2,h=11,$fn=20);
 }
 }
@@ -156,14 +156,14 @@ module jhead_mount() {
    top_d=16;
    top_h=5;
    groove_d=12.3;
-   groove_h=4.2;
-
+   groove_h=5.6;
+   translate([filamentshift-1,0]) 
    difference() {
 	union() {
-      translate([4,54-2,0]) cube([top_d+8,top_h+groove_h+2,24]);
+      translate([4,54-2,0]) cube([top_d+8 -filamentshift + 1+7 ,top_h+groove_h+2,14]);
       hull() {
-        translate([2,54-5,14]) cube([top_d+12,top_h+groove_h+7,10]);
-        translate([4,54-2,10]) cube([top_d+8,top_h+groove_h+2,14]);
+        translate([2,54-5,14]) cube([top_d+12 -filamentshift + 1 ,top_h+groove_h+7,10]);
+        translate([4,54-2,10]) cube([top_d+8  -filamentshift + 1,top_h+groove_h+2,14]);
       }
      }
 	 translate([1.5+11+3.5,54,11]) rotate([-90,0,0]) cylinder(r=groove_d/2+0.5, h=top_h+groove_h+1);
@@ -181,7 +181,12 @@ module jhead_mount() {
 	    translate([1.5+11+3.5,54+top_h+groove_h,11+15]) rotate([-90,0,0]) cylinder(r=(groove_d+4)/2+0.5, h=top_h);
       }
 	 //translate([0,54,12]) cube([33, 2, 20]);
-      translate([30,61,18]) rotate([0,-90,0]) bolt(length=30, d=3.6);
+     translate([40,61,18]) rotate([0,-90,0]) bolt(length=40, d=3.6);
+     //fan 2 holder
+ /*     translate([32,56,7]){
+ translate([0,-1])cube([3,6+1+1.5,5.8]);
+ translate([-4,3.5,5.8/2])rotate([0,90])cylinder(r=3.2/2,h=11,$fn=20);
+}*/
    }
 }
 
@@ -251,20 +256,20 @@ module extruder_42BYG48HJ50_holes() {
 
  // Filament path
  translate([1.5+11+3.5+2+1+filamentshift,65+4,11]) rotate([90,0,0]) cylinder(r=filw/2, h=70,$fn=20);
-translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6.2/2, h=30,$fn=20);
+//translate([1.5+11+3.5+2+1+filamentshift,58+28,11]) rotate([90,0,0]) cylinder(r=6.2/2, h=30,$fn=20);
  // Hole for drive gear check
  translate([1.5+11+3.5-30+2,25-3+4,11]) rotate([90,0,90]) cylinder(r=4, h=70, $fn=20);
 
   translate([12+2,5+4,3]) tiltscrew();
 //m3nut for fan holder
-  translate([28,58,2.5]){
-  translate([-5.8/2,0,0])cube([5.8,10,3]);
-  translate([0,+4.5,-4])cylinder(r=3.2/2,h=20,$fn=15);
-}
+/* # translate([28,58,2.5]){
+  translate([-5.8/2,-1,-1])cube([5.8,11,3]);
+  translate([0,+4.5,-4])cylinder(r=3.2/2,h=5,$fn=15);
+}*/
 if (dual_extruder){
 //m3nut for fan holder
-  translate([-5.8/2,58-8,3])cube([5.8,10,3]);
-  translate([0,58-3.5,0])cylinder(r=3.2/2,h=6,$fn=15);
+ // translate([-5.8/2,58-8,3])cube([5.8,10,3]);
+ // translate([0,58-3.5,0])cylinder(r=3.2/2,h=6,$fn=15);
 
 }
 
@@ -474,7 +479,7 @@ module bearing() {
 module extruder_idler_base(bearing_indent){
 difference(){ 
 union(){
- translate([0,10,3-0.5]) cube([19.5,34,8.5]);
+ translate([0,10-4,3-0.5]) cube([19.5,34+4,8.5]);
  translate([0,25+5,6.1-bearing_indent]) rotate([0,90,0]) cylinder(r=16/2, h=19.5);
 }
 translate([-5,10,3-0.5+8.5])cube([80,80,20]);
