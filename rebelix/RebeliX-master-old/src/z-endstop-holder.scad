@@ -22,5 +22,6 @@ difference(){
 		translate([-0.1,21-5,4])rotate([0,90,0])cylinder(h = 16, r=1.6, $fn=30);
 		translate([16-2.4,21-5,4])rotate([0,90,0])cylinder(h = 2.5, r=3, $fn=6);	
 	}
+    cube([2,21,18],center=false);
 }
 

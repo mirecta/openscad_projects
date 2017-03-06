@@ -158,7 +158,9 @@ module wade(
 			cylinder(r=base_thickness/2,h=wade_block_depth+base_extra_depth,$fn=64);
 
 			translate([-base_leadout + 10,0,0])
-			cylinder(r=base_thickness/2,h=wade_block_depth+base_extra_depth,$fn=64);
+            translate([-base_thickness/2,-base_thickness/2])
+            cube([base_thickness-4,base_thickness+7,wade_block_depth+base_extra_depth]);
+			//cylinder(r=base_thickness/2,h=wade_block_depth+base_extra_depth,$fn=64);
 
 			//Provide the bevel betweeen the base and the wade block.
 			render()
@@ -206,14 +208,24 @@ module wade(
 
 		translate([large_wheel_translation[0]-filament_feed_hole_offset + 12,0,8])
 		rotate([0,180,0]) 
-		  cylinder(r=1.3,h=40,$fn=16,center=false);
+		  cylinder(r=1.2,h=40,$fn=16,center=false);
 
 		translate([large_wheel_translation[0]-filament_feed_hole_offset - 10,0,8]) 
 		rotate([0,180,0]) 
-		  cylinder(r=1.3,h=40,$fn=16,center=false);
-		  
-		
-		block_holes(mounting_holes=mounting_holes);
+		  cylinder(r=1.2,h=40,$fn=16,center=false);
+		  translate([-base_leadout +12 + 3,8,(wade_block_depth+base_extra_depth)/2-10])
+           rotate([0,-90,0]){
+            cylinder(r=m3_diameter/2,h=40,$fn=16,center=false);
+            cylinder(r=m3_nut_diameter/2,h=6,$fn=6);	
+
+			translate([18,0]){
+               cylinder(r=m3_nut_diameter/2,h=6,$fn=6);
+                cylinder(r=m3_diameter/2,h=40,$fn=16,center=false);
+              }
+			//cube([m3_nut_diameter*cos(30),10,idler_nut_thickness-0.8],center=true);   
+               
+          }
+        block_holes(mounting_holes=mounting_holes);
 		motor_mount_holes ();
 
 		translate([large_wheel_translation[0]-filament_feed_hole_offset,
