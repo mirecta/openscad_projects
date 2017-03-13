@@ -28,7 +28,7 @@ default_mounting_holes=mounting_holes_symmetrical;
 
 wade(hotend_mount=default_extruder_mount,
 	mounting_holes=default_mounting_holes);
-translate([-30,40,0]) wadeidler();	
+//translate([-30,40,0]) wadeidler();	
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,6 +77,8 @@ block_top_right=[wade_block_width,wade_block_height];
 layer_thickness=layer_height;
 filament_diameter=2;
 filament_feed_hole_d=(filament_diameter*1.1)/cos(180/8);
+ptfe_diameter=4;
+ptfe_hole_d = 4.2;
 hobbing_depth=0.3;
 echo ("filament_feed_hole_d", filament_feed_hole_d);
 
@@ -314,8 +316,10 @@ echo("bhmh", mounting_holes)
 			// Filament feed.
 			translate([-filament_feed_hole_offset,0,wade_block_depth/2 + filament_feed_hole_position_offset])
 			rotate([90,0,0])
-			rotate(360/16)
+			rotate(360/16){
 			cylinder(r=filament_feed_hole_d/2,h=wade_block_depth*3+elevation,center=true,$fn=16);	
+            #   translate([0,0,wade_block_depth]) cylinder (r=ptfe_hole_d/2,h=wade_block_depth*2,center=true,$fn=16);
+                echo (ptfe_hole_d);}
 
 			// Otvor pro vstup filamentu
 			translate([-filament_feed_hole_offset,50,wade_block_depth/2 + filament_feed_hole_position_offset])
