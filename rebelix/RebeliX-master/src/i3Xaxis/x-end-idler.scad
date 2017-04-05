@@ -58,7 +58,7 @@ module x_end_idler(){
     mirror([0,1,0]) 
     difference(){
         x_end_idler_base();
-        //waste_pocket();
+        waste_pocket();
         
     }
     
