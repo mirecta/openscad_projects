@@ -22,10 +22,10 @@ module x_end_idler_holes(){
 
 module waste_pocket(){
  // waste pocket
-    translate([-15,-1,6]) rotate([90,0,0]) cylinder( h=5, r=5.5, $fn=30);     
-    translate([-15,-1,51]) rotate([90,0,0]) cylinder( h=5, r=5.5, $fn=30);    
-    translate([-15,-5.9,6]) rotate([90,0,0]) cylinder( h=3, r1=5.5, r2=4.3, $fn=30);     
-    translate([-15,-5.9,51]) rotate([90,0,0]) cylinder( h=3, r=5.5, r2=4.3, $fn=30);      
+    //translate([-15,-1,6]) rotate([90,0,0]) cylinder( h=5, r=5.5, $fn=30);     
+    //translate([-15,-1,51]) rotate([90,0,0]) cylinder( h=5, r=5.5, $fn=30);    
+    //translate([-15,-5.9,6]) rotate([90,0,0]) cylinder( h=3, r1=5.5, r2=4.3, $fn=30);     
+    //translate([-15,-5.9,51]) rotate([90,0,0]) cylinder( h=3, r=5.5, r2=4.3, $fn=30);      
 
     
     //M3 thread
@@ -33,8 +33,8 @@ module waste_pocket(){
     translate([-15,8.5,51]) rotate([90,0,0]) cylinder( h=12, r=1.4, $fn=30); 
 
     //M3 heads
-    translate([-15,11.5,6]) rotate([90,0,0]) cylinder( h=4, r=2.9, $fn=30); 
-    translate([-15,11.5,51]) rotate([90,0,0]) cylinder( h=4, r=2.9, $fn=30); 
+    translate([-15,11.5,6]) rotate([90,0,0]) cylinder( h=4, r=3.2, $fn=30); 
+    translate([-15,11.5,51]) rotate([90,0,0]) cylinder( h=4, r=3.2, $fn=30); 
 
     //M3 nut traps
     translate([-17.9,0.5,52-3-1.6]) cube([5.8,3.1,20]);

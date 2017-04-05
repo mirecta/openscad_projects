@@ -28,7 +28,7 @@ default_mounting_holes=mounting_holes_symmetrical;
 
 wade(hotend_mount=default_extruder_mount,
 	mounting_holes=default_mounting_holes);
-translate([-30,40,0]) wadeidler();	
+//translate([-30,40,0]) wadeidler();	
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,11 +77,14 @@ block_top_right=[wade_block_width,wade_block_height];
 layer_thickness=layer_height;
 filament_diameter=2;
 filament_feed_hole_d=(filament_diameter*1.1)/cos(180/8);
+
+ptfe_diameter=4;
+ptfe_hole_d = 4.6;
 hobbing_depth=0.3;
 echo ("filament_feed_hole_d", filament_feed_hole_d);
 
 //This is the distance from the centre of the filament to the centre of the hobbed bolt.
-filament_feed_hole_offset=8/2-hobbing_depth+filament_diameter/2 -0.5;
+filament_feed_hole_offset=8/2-hobbing_depth+filament_diameter/2 -0.5 -0.5;
 filament_feed_hole_position_offset = 1;
 
 echo ("filament_feed_hole_offset", filament_feed_hole_offset);
@@ -173,7 +176,7 @@ module wade(
 				cylinder(r=block_bevel_r,h=wade_block_depth+base_extra_depth,$fn=60);
 				translate([wade_block_width+block_bevel_r-3+wade_body_offset,
 					block_bevel_r-3+base_thickness/2])
-				cylinder(r=block_bevel_r-3,h=wade_block_depth+base_extra_depth,$fn=60);
+			    cylinder(r=block_bevel_r-3,h=wade_block_depth+base_extra_depth,$fn=60);
 				translate([wade_block_width+wade_body_offset,
 					block_bevel_r-3+base_thickness/2])
 				cube([2*(block_bevel_r-3),2*(block_bevel_r-3),wade_block_depth+base_extra_depth]);
@@ -314,8 +317,10 @@ echo("bhmh", mounting_holes)
 			// Filament feed.
 			translate([-filament_feed_hole_offset,0,wade_block_depth/2 + filament_feed_hole_position_offset])
 			rotate([90,0,0])
-			rotate(360/16)
+			rotate(360/16){
 			cylinder(r=filament_feed_hole_d/2,h=wade_block_depth*3+elevation,center=true,$fn=16);	
+               translate([0,0,wade_block_depth]) cylinder (r=ptfe_hole_d/2,h=wade_block_depth*2,center=true,$fn=16);
+                echo (ptfe_hole_d);}
 
 			// Otvor pro vstup filamentu
 			translate([-filament_feed_hole_offset,50,wade_block_depth/2 + filament_feed_hole_position_offset])
@@ -509,6 +514,8 @@ module groovemount_holes (extruder_recess_d=16.2)
 	extruder_recess_h=5;
 
 	// Recess in base
-	translate([0,0,-1])
-	cylinder(r=extruder_recess_d/2,h=extruder_recess_h+1,$fn=64);
+	translate([0,0,-6+3.7]){
+	cylinder(r=extruder_recess_d/2+0.25,h=extruder_recess_h+1,$fn=64);
+        cylinder(r=7.7/2,h=extruder_recess_h+1.5+2.7,$fn=64);
+    }
 }
