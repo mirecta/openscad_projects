@@ -41,7 +41,7 @@ z_base_offset = 11;
 // Tloustka rohovych spojek
 // 5 mm => sroub M6x14 s podlozkou
 // 3 mm => sroub M6x12 s podlozkou
-coupler_thickness = 5;
+coupler_thickness = 7;
 
 // Prumer 8mm tyce
 rod_8mm_d = 8.2;
