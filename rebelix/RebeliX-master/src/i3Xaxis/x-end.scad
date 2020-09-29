@@ -29,16 +29,16 @@ module x_end_holes(){
 translate(v=[-1,0,0]){
 // Stress relief
 translate(v=[-5.5-10+1.5,-10-1,30]) cube(size = [18,1,28], center = true);
-difference(){
-	translate(v=[-5.5-10+1.5,-10,30]) cube(size = [10,46,28], center = true);
+#difference(){
+	translate(v=[-5.5-10+1.5,-10,30]) cube(size = [10,65,28], center = true);
 
 	
 
 	// Nice edges
-	translate(v=[-5.5-10+1.5-5,-10,30+23]) rotate([0,20,0]) cube(size = [10,46,28], center = true);
-	translate(v=[-5.5-10+1.5+5,-10,30+23]) rotate([0,-20,0]) cube(size = [10,46,28], center = true);
-	translate(v=[-5.5-10+1.5,-10,30-23]) rotate([0,45,0]) cube(size = [10,46,28], center = true);
-	translate(v=[-5.5-10+1.5,-10,30-23]) rotate([0,-45,0]) cube(size = [10,46,28], center = true);
+	translate(v=[-5.5-10+1.5-5,-10,30+23]) rotate([0,20,0]) cube(size = [10,65,28], center = true);
+	translate(v=[-5.5-10+1.5+5,-10,30+23]) rotate([0,-20,0]) cube(size = [10,65,28], center = true);
+	translate(v=[-5.5-10+1.5,-10,30-23]) rotate([0,45,0]) cube(size = [10,65,28], center = true);
+	translate(v=[-5.5-10+1.5,-10,30-23]) rotate([0,-45,0]) cube(size = [10,65,28], center = true);
 
 }
 }

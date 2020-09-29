@@ -6,10 +6,10 @@
 // http://prusamendel.org
 
 use <x-end.scad>
-
+ypos = 42;
 module x_end_motor_base(){
  x_end_base();
- translate(v=[-15,31,26.5]) cube(size = [17,44,53], center = true);
+ translate(v=[-15,-6+ypos,26.5]) cube(size = [17,ypos+12,53], center = true);
 }
 
 module x_end_motor_endstop_base(){
@@ -37,7 +37,7 @@ module x_end_motor_endstop_holes(){
 module x_end_motor_holes(){
  x_end_holes();
  // Position to place
- translate(v=[-1,32,30.25]){
+ translate(v=[-1,ypos,30.25]){
   // Belt hole
   translate(v=[-14,1,0]) cube(size = [10,46,22], center = true);
   // Motor mounting holes
@@ -64,16 +64,16 @@ module x_end_motor_holes(){
 module x_end_motor_shaft_cutout(){
     union(){
     difference(){
-        translate(v=[0,32,30]) rotate(a=[0,-90,0]) rotate(a=[0,0,90]) cylinder(h = 70, r=17, $fn=6);
+        translate(v=[0,ypos,30]) rotate(a=[0,-90,0]) rotate(a=[0,0,90]) cylinder(h = 70, r=17, $fn=6);
        
-        translate(v=[-10,-17+32,30]) cube(size = [60,2,10], center = true);
-        translate(v=[-10,-8+32,-15.5+30]) rotate(a=[60,0,0]) cube(size = [60,2,10], center = true); ///
-        translate(v=[-10,8+32,-15.5+30]) rotate(a=[-60,0,0]) cube(size = [60,2,10], center = true);
+        translate(v=[-10,-17+ypos,30]) cube(size = [60,2,10], center = true);
+        translate(v=[-10,-8+ypos,-15.5+30]) rotate(a=[60,0,0]) cube(size = [60,2,10], center = true); ///
+        translate(v=[-10,8+ypos,-15.5+30]) rotate(a=[-60,0,0]) cube(size = [60,2,10], center = true);
         
         
     }
-    translate(v=[-30,25.2,-11.8 +30]) rotate(a=[0,90,0]) cylinder(h = 30, r=3, $fn=30);
-    translate(v=[-30,19.05,30]) rotate(a=[0,90,0]) cylinder(h = 30, r=3.5, $fn=100);
+    translate(v=[-30,-6.8 + ypos,-11.8 +30]) rotate(a=[0,90,0]) cylinder(h = 30, r=3, $fn=30);
+    translate(v=[-30,-12.95 + ypos,30]) rotate(a=[0,90,0]) cylinder(h = 30, r=3.5, $fn=100);
 }
 }
 
@@ -85,11 +85,11 @@ module x_end_motor(){
  difference(){
      union(){
             x_end_motor_base();
-            //x_end_motor_endstop_base();
+            x_end_motor_endstop_base();
          }
   x_end_motor_shaft_cutout();
   x_end_motor_holes();
-  //x_end_motor_endstop_holes();    
+  x_end_motor_endstop_holes();    
       
       translate([-12,-42,65]) rotate([-35,0,0])  rotate([0,0,45]) cube(10,10,10);
       translate([-15,8.5,6]) rotate([90,0,0]) cylinder(h=5, r=5, $fn=30);   

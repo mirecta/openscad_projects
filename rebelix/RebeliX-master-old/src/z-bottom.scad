@@ -12,7 +12,7 @@ include <../configuration.scad>
 // Mezera mezi motorem a soucastkou (tlumi prenaseni vibraci)
 space = 0.6;
 
-height = motor_length + space;
+height = 55+ space;
 
 // Hodnota musi byt stejna i v z_top (minimum 13)
 base_offset = 13; 
