@@ -1,1 +1,4 @@
 hexagon 27mm
+bottom carriage from bed 52mm
+bltouch size 41mm
+
